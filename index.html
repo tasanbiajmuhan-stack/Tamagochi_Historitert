@@ -1,0 +1,133 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Historical Tamagotchi</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body data-theme="dark" data-character="stalin">
+    <div id="selectionScreen" class="screen active">
+      <header class="panel brand-header">
+        <div>
+          <div class="brand-title">Historical Tamagotchi</div>
+          <div class="brand-subtitle">Пять правителей. Один нервный разработчик.</div>
+        </div>
+        <button id="menuThemeToggle" class="theme-button" type="button">🌙 Тёмная</button>
+      </header>
+
+      <main class="selection-wrap">
+        <section class="selection-intro">
+          <h1>Выбор правителя</h1>
+          <p>
+            Каждый правитель ведёт свой сценарий, требует внимания и обязательно
+            найдёт, за что критиковать ваш код.
+          </p>
+        </section>
+        <div id="characterCards" class="character-cards"></div>
+      </main>
+    </div>
+
+    <div id="gameScreen" class="screen hidden">
+      <header class="panel game-header">
+        <div class="game-brand">
+          <div class="brand-title small">Historical Tamagotchi</div>
+          <div class="brand-subtitle">Сатирическая история в режиме «питомец-император»</div>
+        </div>
+
+        <div class="header-controls">
+          <div class="speed-group">
+            <button class="speed-button" data-speed="pause" type="button">Пауза</button>
+            <button class="speed-button active" data-speed="normal" type="button">Обычная</button>
+            <button class="speed-button" data-speed="fast" type="button">Быстрая</button>
+          </div>
+
+          <div class="toolbar-group">
+            <button id="backToMenuButton" class="secondary" type="button">Назад к выбору</button>
+            <button id="saveGameButton" type="button">Сохранить</button>
+            <button id="loadGameButton" type="button">Загрузить</button>
+            <button id="resetGameButton" class="danger" type="button">Сброс</button>
+            <button id="gameThemeToggle" class="theme-button" type="button">🌙 Тёмная</button>
+            <button id="soundToggleButton" class="theme-button" type="button">🔊 Звук: вкл</button>
+          </div>
+        </div>
+      </header>
+
+      <main class="game-layout">
+        <aside class="stack-column">
+          <section class="panel profile-panel">
+            <div class="avatar-frame">
+              <div id="bigAvatar" class="avatar-figure stalin neutral" aria-label="Аватар правителя">
+                <div class="head">
+                  <div class="hair"></div>
+                  <div class="eyes"><span class="eye"></span><span class="eye"></span></div>
+                  <div class="mouth"></div>
+                </div>
+                <div class="torso"></div>
+              </div>
+            </div>
+
+            <div class="profile-meta">
+              <div class="meta-row"><span>Имя</span><strong id="characterName">—</strong></div>
+              <div class="meta-row"><span>Локация</span><strong id="characterLocation">—</strong></div>
+              <div class="meta-row"><span>День</span><strong id="dayValue">1</strong></div>
+              <div class="meta-row"><span>Настроение</span><strong id="moodValue">—</strong></div>
+              <div class="meta-row"><span>Статус</span><strong id="stateStatus">—</strong></div>
+              <div class="meta-row"><span>Припасы</span><strong id="suppliesValue">0</strong></div>
+            </div>
+          </section>
+
+          <section class="panel stats-panel">
+            <h3>Характеристики</h3>
+            <div id="statsContainer" class="stats-container"></div>
+          </section>
+        </aside>
+
+        <section class="center-column">
+          <section class="panel console-panel">
+            <div class="panel-header">
+              <span id="consoleTitle">Консоль</span>
+              <button id="clearConsoleButton" class="secondary" type="button">Очистить журнал</button>
+            </div>
+            <div id="consoleOutput" class="console-output" aria-live="polite"></div>
+            <form id="decreeForm" class="decree-form">
+              <input id="decreeInput" type="text" maxlength="180" placeholder="Напишите указ..." />
+              <button type="submit">Отправить указ</button>
+            </form>
+          </section>
+
+          <section class="panel actions-panel">
+            <h3>Действия правителя</h3>
+            <div id="actionButtons" class="action-grid"></div>
+          </section>
+        </section>
+
+        <aside class="stack-column">
+          <section class="panel tasks-panel">
+            <h3>Задания</h3>
+            <div id="taskList" class="task-list"></div>
+          </section>
+
+          <section class="panel scroll-panel">
+            <h3>Гневные свитки</h3>
+            <div id="scrollLog" class="scroll-log"></div>
+          </section>
+
+          <section class="panel achievements-panel">
+            <h3>Достижения</h3>
+            <ul id="achievementList" class="achievement-list"></ul>
+          </section>
+
+          <section class="panel journal-panel">
+            <h3>Журнал событий</h3>
+            <div id="eventJournal" class="event-journal"></div>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <div id="modalOverlay" class="modal-overlay hidden" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
